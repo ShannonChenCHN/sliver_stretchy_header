@@ -39,7 +39,7 @@ import 'package:sliver_stretch_header/sliver_stretch_header.dart';
 
 For help getting started with Flutter, view the online [documentation](https://flutter.io/).
 
-## SliverStretchHeader
+## Usage
 
 You can place your `SliverStretchHeader` inside a `CustomScrollView`(normally at 1st or 2nd place).
 
