@@ -2,6 +2,8 @@
 
 Flutter implementation of stretchable header with a background as a sliver.
 
+[![Pub](https://img.shields.io/pub/v/sliver_stretch_header)](https://pub.dev/packages/sliver_stretch_header)
+
 ```
              /--------------/  --
             /              /   /
