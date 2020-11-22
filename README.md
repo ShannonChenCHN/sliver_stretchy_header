@@ -1,8 +1,6 @@
-# sliver_stretch_header
+# sliver_stretchy_header
 
 A sliver that contains a bottom-aligned box child and a stretchy box background.
-
-[![Pub](https://img.shields.io/pub/v/sliver_stretch_header)](https://pub.dev/packages/sliver_stretch_header)
 
 ```
              /--------------/  --
@@ -30,23 +28,23 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  sliver_stretch_header:
+  sliver_stretchy_header:
 ```
 
 In your library add the following import:
 
 ```dart
-import 'package:sliver_stretch_header/sliver_stretch_header.dart';
+import 'package:sliver_stretchy_header/sliver_stretchy_header.dart';
 ```
 
 For help getting started with Flutter, view the online [documentation](https://flutter.io/).
 
 ## Usage
 
-You can place your `SliverStretchHeader` inside a `CustomScrollView`, Typically this will be the first or the second sliver in a viewport.
+You can place your `SliverStretchyHeader` inside a `CustomScrollView`, Typically this will be the first or the second sliver in a viewport.
 
 ```dart
-SliverStretchHeader(
+SliverStretchyHeader(
   minBlankExtent: 100,    
   background: Container(
                 color: Colors.red,
@@ -59,7 +57,7 @@ SliverStretchHeader(
 ),
 ```
 
-You can find more details in the [Example](https://github.com/ShannonChenCHN/sliver_stretch_header/tree/master/example) project.
+You can find more details in the [Example](https://github.com/ShannonChenCHN/sliver_stretchy_header/tree/master/example) project.
 
 ## Thanks
 

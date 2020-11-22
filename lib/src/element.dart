@@ -4,11 +4,11 @@ import 'render_object.dart';
 import 'widget.dart';
 
 /// 带有背景和下拉拉伸效果的 header
-class SliverStretchHeaderElement extends RenderObjectElement {
-  SliverStretchHeaderElement(SliverStretchHeader widget) : super(widget);
+class SliverStretchyHeaderElement extends RenderObjectElement {
+  SliverStretchyHeaderElement(SliverStretchyHeader widget) : super(widget);
 
   @override
-  SliverStretchHeader get widget => super.widget as SliverStretchHeader;
+  SliverStretchyHeader get widget => super.widget as SliverStretchyHeader;
 
   Element _background;
 
@@ -46,7 +46,7 @@ class SliverStretchHeaderElement extends RenderObjectElement {
   }
 
   @override
-  void update(SliverStretchHeader newWidget) {
+  void update(SliverStretchyHeader newWidget) {
     super.update(newWidget);
     assert(widget == newWidget);
     _child = updateChild(_child, widget.child, 0);
@@ -55,7 +55,7 @@ class SliverStretchHeaderElement extends RenderObjectElement {
 
   @override
   void insertRenderObjectChild(covariant RenderBox child, dynamic slot) {
-    final RenderSliverStretchHeader renderObject = this.renderObject;
+    final RenderSliverStretchyHeader renderObject = this.renderObject;
     if (slot == 0) renderObject.child = child;
     if (slot == 1) renderObject.background = child;
     assert(renderObject == this.renderObject);
@@ -68,7 +68,7 @@ class SliverStretchHeaderElement extends RenderObjectElement {
 
   @override
   void removeRenderObjectChild(covariant RenderObject child, dynamic slot) {
-    final RenderSliverStretchHeader renderObject = this.renderObject;
+    final RenderSliverStretchyHeader renderObject = this.renderObject;
     if (renderObject.child == child) renderObject.child = null;
     if (renderObject.background == child) renderObject.background = null;
     assert(renderObject == this.renderObject);

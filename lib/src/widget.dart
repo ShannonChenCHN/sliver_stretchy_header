@@ -15,8 +15,8 @@ import 'element.dart';
 /// /-------------/  /   /
 ///  /--------------/  --
 ///
-class SliverStretchHeader extends RenderObjectWidget {
-  const SliverStretchHeader({
+class SliverStretchyHeader extends RenderObjectWidget {
+  const SliverStretchyHeader({
     Key key,
     this.child,
     this.background,
@@ -35,17 +35,17 @@ class SliverStretchHeader extends RenderObjectWidget {
   final double minBlankExtent;
 
   @override
-  SliverStretchHeaderElement createElement() => SliverStretchHeaderElement(this);
+  SliverStretchyHeaderElement createElement() => SliverStretchyHeaderElement(this);
 
   @override
-  RenderSliverStretchHeader createRenderObject(BuildContext context) {
-    return RenderSliverStretchHeader(
+  RenderSliverStretchyHeader createRenderObject(BuildContext context) {
+    return RenderSliverStretchyHeader(
         minBlankExtent: minBlankExtent
     );
   }
 
   @override
-  void updateRenderObject(BuildContext context, RenderSliverStretchHeader renderObject) {
+  void updateRenderObject(BuildContext context, RenderSliverStretchyHeader renderObject) {
     renderObject..minBlankExtent = minBlankExtent;
   }
 }

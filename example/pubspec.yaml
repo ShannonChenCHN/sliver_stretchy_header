@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  sliver_stretch_header:
+  sliver_stretchy_header:
     path: ../
 
 dev_dependencies:

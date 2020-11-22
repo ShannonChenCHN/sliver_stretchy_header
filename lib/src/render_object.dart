@@ -3,8 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
 
 /// 带有背景和下拉拉伸效果的 header
-class RenderSliverStretchHeader extends RenderSliver with RenderSliverHelpers {
-  RenderSliverStretchHeader({
+class RenderSliverStretchyHeader extends RenderSliver with RenderSliverHelpers {
+  RenderSliverStretchyHeader({
     RenderBox child,
     RenderBox background,
     minBlankExtent = 0.0,

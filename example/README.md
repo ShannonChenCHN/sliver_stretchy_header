@@ -1,4 +1,4 @@
-# sliver_stretch_header
+# example
 
 A new Flutter project.
 

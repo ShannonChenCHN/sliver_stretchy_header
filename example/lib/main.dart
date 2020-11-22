@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sliver_stretch_header/sliver_stretch_header.dart';
+import 'package:sliver_stretchy_header/sliver_stretchy_header.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("SliverStretchHeader Example"),
+          title: Text("SliverStretchyHeader Example"),
         ),
         body: CustomScrollView(
           slivers: [
-            SliverStretchHeader(
+            SliverStretchyHeader(
               minBlankExtent: 100,
               background: Container(
                 color: Colors.red,

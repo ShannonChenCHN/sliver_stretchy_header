@@ -1,4 +1,4 @@
-package com.example.sliver_stretch_header
+package com.example.example
 
 import io.flutter.embedding.android.FlutterActivity
 
