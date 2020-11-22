@@ -7,23 +7,23 @@ class RenderSliverStretchHeader extends RenderSliver with RenderSliverHelpers {
   RenderSliverStretchHeader({
     RenderBox child,
     RenderBox background,
-    minStretchExtent = 0.0,
+    minBlankExtent = 0.0,
   }) {
-    _minStretchExtent = minStretchExtent;
+    _minBlankExtent = minBlankExtent;
     this.child = child;
     this.background = background;
   }
 
-  double get minBackgroundExtent => childExtent + minStretchExtent;
+  double get minBackgroundExtent => childExtent + minBlankExtent;
   bool get isStretching => scrollOffset <= 0;
   double get scrollOffset => constraints.scrollOffset + constraints.overlap;
 
-  double get minStretchExtent => _minStretchExtent;
-  double _minStretchExtent;
-  set minStretchExtent(double value) {
+  double get minBlankExtent => _minBlankExtent;
+  double _minBlankExtent;
+  set minBlankExtent(double value) {
     assert(value != null);
-    if (_minStretchExtent == value) return;
-    _minStretchExtent = value;
+    if (_minBlankExtent == value) return;
+    _minBlankExtent = value;
     markNeedsLayout();
   }
 
@@ -238,7 +238,7 @@ class RenderSliverStretchHeader extends RenderSliver with RenderSliverHelpers {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DoubleProperty.lazy('minimum stretch extent', () => minStretchExtent));
+    properties.add(DoubleProperty.lazy('minimum stretch extent', () => minBlankExtent));
     properties.add(DoubleProperty.lazy('child position', () => childMainAxisPosition(child)));
   }
 }

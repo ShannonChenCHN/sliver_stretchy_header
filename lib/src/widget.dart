@@ -7,9 +7,9 @@ import 'element.dart';
 ///
 ///          /--------------/  --
 ///         /              /   /
-///        /  background  /   /  可拉伸区域
+///        /  background  /   /
 ///       /              /   /
-///    /-------------/  /   /
+///    /-------------/  /   /  stretchable
 ///   /    child    /  /   /
 ///  /             /  /   /
 /// /-------------/  /   /
@@ -20,7 +20,7 @@ class SliverStretchHeader extends RenderObjectWidget {
     Key key,
     this.child,
     this.background,
-    this.minStretchExtent
+    this.minBlankExtent
   }) : assert(child != null),
         assert(background != null),
         super(key: key);
@@ -31,8 +31,8 @@ class SliverStretchHeader extends RenderObjectWidget {
   /// 展示在最底层的背景，会随着拉伸放大
   final Widget background;
 
-  /// 可拉伸区域的最小高度
-  final double minStretchExtent;
+  /// 顶部空白处(可拉伸)的最小高度
+  final double minBlankExtent;
 
   @override
   SliverStretchHeaderElement createElement() => SliverStretchHeaderElement(this);
@@ -40,12 +40,12 @@ class SliverStretchHeader extends RenderObjectWidget {
   @override
   RenderSliverStretchHeader createRenderObject(BuildContext context) {
     return RenderSliverStretchHeader(
-      minStretchExtent: minStretchExtent
+        minBlankExtent: minBlankExtent
     );
   }
 
   @override
   void updateRenderObject(BuildContext context, RenderSliverStretchHeader renderObject) {
-    renderObject..minStretchExtent = minStretchExtent;
+    renderObject..minBlankExtent = minBlankExtent;
   }
 }

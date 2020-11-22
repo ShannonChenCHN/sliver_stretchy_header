@@ -1,6 +1,6 @@
 # sliver_stretch_header
 
-A sliver that contains a bottom-aligned box child and a stretchable box background.
+A sliver that contains a bottom-aligned box child and a stretchy box background.
 
 [![Pub](https://img.shields.io/pub/v/sliver_stretch_header)](https://pub.dev/packages/sliver_stretch_header)
 
@@ -18,9 +18,9 @@ A sliver that contains a bottom-aligned box child and a stretchable box backgrou
 
 ## Features
 
-* Accepts one widget as child.
-* Accepts one widget as a background.
-* No other arguments required besides `minStretchExtent`.
+* Accepts one box widget as child.
+* Accepts one box widget as a background.
+* No other arguments required besides `minBlankExtent`.
 * Can stretch to fill the over-scroll area when the user over-scrolls.
 
 ## Getting started
@@ -47,7 +47,7 @@ You can place your `SliverStretchHeader` inside a `CustomScrollView`(normally at
 
 ```dart
 SliverStretchHeader(
-  minStretchExtent: 100,    
+  minBlankExtent: 100,    
   background: Container(
                 color: Colors.red,
               ),

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverStretchHeader(
-              minStretchExtent: 100,
+              minBlankExtent: 100,
               background: Container(
                 color: Colors.red,
               ),
