@@ -43,7 +43,7 @@ For help getting started with Flutter, view the online [documentation](https://f
 
 ## Usage
 
-You can place your `SliverStretchHeader` inside a `CustomScrollView`(normally at 1st or 2nd place).
+You can place your `SliverStretchHeader` inside a `CustomScrollView`, Typically this will be the first or the second sliver in a viewport.
 
 ```dart
 SliverStretchHeader(
