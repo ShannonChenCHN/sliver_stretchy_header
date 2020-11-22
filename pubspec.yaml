@@ -1,5 +1,5 @@
 name: sliver_stretch_header
-description: Flutter implementation of stretchable header with a background as a sliver. Use it in a CustomScrollView.
+description: A sliver that contains a bottom-aligned box child and a stretchable box background. Use it in a CustomScrollView.
 version: 0.1.0
 homepage: https://github.com/ShannonChenCHN/sliver_stretch_header
 

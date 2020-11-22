@@ -1,6 +1,6 @@
 # sliver_stretch_header
 
-Flutter implementation of stretchable header with a background as a sliver.
+A sliver that contains a bottom-aligned box child and a stretchable box background.
 
 [![Pub](https://img.shields.io/pub/v/sliver_stretch_header)](https://pub.dev/packages/sliver_stretch_header)
 
