@@ -1,6 +1,6 @@
 name: sliver_stretchy_header
 description: A sliver that contains a bottom-aligned box child and a stretchy box background. Use it in a CustomScrollView.
-version: 0.2.0
+version: 0.3.0
 homepage: https://github.com/ShannonChenCHN/sliver_stretchy_header
 
 environment:
