@@ -2,6 +2,9 @@
 
 A sliver that contains a bottom-aligned box child and a stretchy box background.
 
+
+[![Pub](https://img.shields.io/pub/v/sliver_stretchy_header)](https://pub.dev/packages/sliver_stretchy_header)
+
 ```
              /--------------/  --
             /              /   /
