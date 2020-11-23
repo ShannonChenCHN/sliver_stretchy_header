@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
 
@@ -126,24 +126,26 @@ class RenderSliverStretchyHeader extends RenderSliver with RenderSliverHelpers {
     );
 
     // 更新 geometry
+    // 为了能让实际布局、绘制区域从 view port 最上面开始，这里在计算时减去了 precedingScrollExtent
     if (isStretching) {
       final double effectiveRemainingPaintExtent = math.max(0, constraints.remainingPaintExtent - constraints.overlap);
-      final double layoutExtent = minBackgroundExtent.clamp(0.0, effectiveRemainingPaintExtent) - constraints.precedingScrollExtent;
-
+      final double layoutExtent = (minBackgroundExtent - constraints.precedingScrollExtent).clamp(0.0, effectiveRemainingPaintExtent);
+      final double paintExtent = (backgroundExtent - constraints.precedingScrollExtent).clamp(0.0, effectiveRemainingPaintExtent);
       geometry = SliverGeometry(
         scrollExtent: backgroundExtent,
         paintOrigin: math.min(constraints.overlap, 0.0),
-        paintExtent: math.min(backgroundExtent, effectiveRemainingPaintExtent),
-        layoutExtent: math.max(layoutExtent, 0.0),
-        maxPaintExtent: backgroundExtent,
+        paintExtent: paintExtent,
+        layoutExtent: layoutExtent,
+        maxPaintExtent: paintExtent,
         cacheExtent: backgroundExtent,
+        hitTestExtent: backgroundExtent,
         maxScrollObstructionExtent: 0.0,
         hasVisualOverflow: true,
       );
     } else {
-      final double paintedBackgroundSize = calculatePaintOffset(constraints, from: 0.0, to: backgroundExtent);
+      final paintedBackgroundExtent = math.max(0.0, backgroundExtent - constraints.precedingScrollExtent);
+      final double paintedBackgroundSize = calculatePaintOffset(constraints, from: 0.0, to: paintedBackgroundExtent);
       final double cacheExtent = calculateCacheOffset(constraints, from: 0.0, to: backgroundExtent);
-      final double layoutExtent = paintedBackgroundSize - constraints.precedingScrollExtent;
 
       assert(paintedBackgroundSize.isFinite);
       assert(paintedBackgroundSize >= 0.0);
@@ -151,9 +153,9 @@ class RenderSliverStretchyHeader extends RenderSliver with RenderSliverHelpers {
         scrollExtent: backgroundExtent,
         paintExtent: paintedBackgroundSize,
         cacheExtent: cacheExtent,
-        layoutExtent:math.max(layoutExtent, 0.0),
-        maxPaintExtent: backgroundExtent,
-        hitTestExtent: paintedBackgroundSize,
+        layoutExtent:paintedBackgroundSize,
+        maxPaintExtent: paintedBackgroundSize,
+        hitTestExtent: backgroundExtent,
         hasVisualOverflow: backgroundExtent > constraints.remainingPaintExtent || scrollOffset > 0.0,
       );
     }
@@ -175,6 +177,27 @@ class RenderSliverStretchyHeader extends RenderSliver with RenderSliverHelpers {
     }
 
     return 0.0;
+  }
+
+  @override
+  bool hitTest(SliverHitTestResult result, {double mainAxisPosition, double crossAxisPosition}) {
+    assert(geometry.hitTestExtent > constraints.precedingScrollExtent);
+
+    // 因为实际绘制和布局的区域是从 view port 最上面开始的，所以这里需要减去 precedingScrollExtent
+    if (mainAxisPosition >= -constraints.precedingScrollExtent &&
+        mainAxisPosition < geometry.hitTestExtent - constraints.precedingScrollExtent &&
+        crossAxisPosition >= 0.0 && crossAxisPosition < constraints.crossAxisExtent) {
+      if (hitTestChildren(result, mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition) ||
+          hitTestSelf(mainAxisPosition: mainAxisPosition, crossAxisPosition: crossAxisPosition)) {
+        result.add(SliverHitTestEntry(
+          this,
+          mainAxisPosition: mainAxisPosition,
+          crossAxisPosition: crossAxisPosition,
+        ));
+        return true;
+      }
+    }
+    return false;
   }
 
   @override
