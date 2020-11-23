@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'render_object.dart';
@@ -5,16 +6,15 @@ import 'element.dart';
 
 /// 带有背景和下拉拉伸效果的 header
 ///
-///          /--------------/  --
-///         /              /   /
-///        /  background  /   /
-///       /              /   /
-///    /-------------/  /   /  stretchable
-///   /    child    /  /   /
-///  /             /  /   /
-/// /-------------/  /   /
-///  /--------------/  --
-///
+///          /--------------/ --  --
+///         /              /  /   /
+///        /  background  /  /----------->  blank extent
+///       /              /  /   /
+///    /-------------/  / --   /  stretchable
+///   /    child    /  /      /
+///  /             /  /      /
+/// /-------------/  /      /
+///  /--------------/     --
 class SliverStretchyHeader extends RenderObjectWidget {
   const SliverStretchyHeader({
     Key key,
@@ -31,7 +31,7 @@ class SliverStretchyHeader extends RenderObjectWidget {
   /// 展示在最底层的背景，会随着拉伸放大
   final Widget background;
 
-  /// 顶部空白处(可拉伸)的最小高度
+  /// child 距离顶部的最小高度，也就是没有拉伸时的距离
   final double minBlankExtent;
 
   @override
@@ -40,7 +40,7 @@ class SliverStretchyHeader extends RenderObjectWidget {
   @override
   RenderSliverStretchyHeader createRenderObject(BuildContext context) {
     return RenderSliverStretchyHeader(
-        minBlankExtent: minBlankExtent
+      minBlankExtent: minBlankExtent
     );
   }
 
